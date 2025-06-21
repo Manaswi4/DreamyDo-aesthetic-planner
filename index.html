@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DreamyDo🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ribeye+Marrow&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="main-bg"></div>
+  <div class="container main-flex">
+    <aside class="left-panel">
+      <h1 class="blushtasks-heading">DreamyDo 🌸</h1>
+      <div class="date-display" id="dateDisplay"></div>
+      <div class="goal-card">
+        <h2 class="goal-title">🎯 Daily Goal</h2>
+        <div id="goalInputSection" class="goal-input">
+          <input type="text" id="goalInput" placeholder="Set your daily goal..." class="caveat-uniquifier">
+          <button id="setGoalBtn" onclick="setGoal()">Set Goal</button>
+        </div>
+        <p id="goalText" class="goal-text"></p>
+        <button id="changeGoalBtn" class="aesthetic-btn" style="display:none;">Change Goal</button>
+      </div>
+      <div class="task-section">
+        <h2 class="task-title">📝 Tasks</h2>
+        <div class="task-input">
+          <input type="text" id="taskInput" placeholder="Add a new task..." class="caveat-uniquifier">
+          <button onclick="addTask()">➕ Add</button>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <ul id="taskList" class="caveat-uniquifier"></ul>
+        <div class="counter">
+          ✅ Completed: <span id="completedCount">0</span> |
+          ⏳ Pending: <span id="pendingCount">0</span>
+        </div>
+      </div>
+    
+      <div class="vision-board">
+        <h2 class="vision-title">🌈 Vision Board</h2>
+        <textarea id="visionInput" placeholder="Write or paste images/links for your vision..." class="caveat-uniquifier"></textarea>
+        <label for="visionImageInput" class="aesthetic-btn vision-upload-btn">📷 Add Image</label>
+        <input type="file" id="visionImageInput" accept="image/*" multiple style="display:none;">
+        <div id="visionImages" class="vision-images"></div>
+      </div>
+      <div class="minecraft-coder-area">
+  <svg class="minecraft-coder-svg" width="180" height="170" viewBox="0 0 180 170">
+    <!-- Table -->
+    <rect x="20" y="120" width="140" height="18" rx="3" fill="#ECD0EC" stroke="#BA71A2" stroke-width="2"/>
+    <!-- Chair -->
+    <rect x="60" y="138" width="60" height="18" rx="3" fill="#BA71A2" opacity="0.4"/>
+    <!-- Legs -->
+    <rect x="75" y="130" width="10" height="30" fill="#7E2A53"/>
+    <rect x="95" y="130" width="10" height="30" fill="#502A50"/>
+    <!-- Body -->
+    <rect x="70" y="90" width="40" height="40" fill="#BA71A2" stroke="#7E2A53" stroke-width="2"/>
+    <!-- Head -->
+    <rect x="75" y="65" width="30" height="30" fill="#FFD6E0" stroke="#7E2A53" stroke-width="2"/>
+    <!-- Face details -->
+    <rect x="82" y="80" width="4" height="4" fill="#502A50"/>
+    <rect x="94" y="80" width="4" height="4" fill="#502A50"/>
+    <rect x="87" y="90" width="6" height="2" fill="#7E2A53"/>
+    <!-- Left Arm -->
+    <rect x="60" y="100" width="10" height="28" fill="#FFD6E0" stroke="#7E2A53" stroke-width="2"/>
+    <!-- Right Arm (on laptop) -->
+    <rect x="110" y="100" width="10" height="28" fill="#FFD6E0" stroke="#7E2A53" stroke-width="2"/>
+    <!-- Laptop -->
+    <rect x="95" y="115" width="22" height="12" fill="#fff" stroke="#7E2A53" stroke-width="2"/>
+    <rect x="98" y="122" width="16" height="4" fill="#ECD0EC"/>
+    <!-- Thought cloud -->
+    <g class="thought-cloud">
+      <rect x="120" y="30" width="48" height="24" rx="10" fill="#fff" stroke="#BA71A2" stroke-width="2"/>
+      <rect x="155" y="50" width="16" height="10" rx="5" fill="#fff" stroke="#BA71A2" stroke-width="1"/>
+      <rect x="140" y="60" width="10" height="6" rx="3" fill="#fff" stroke="#BA71A2" stroke-width="1"/>
+      <!-- Connecting bubbles -->
+      <ellipse cx="130" cy="80" rx="4" ry="2.5" fill="#fff" stroke="#BA71A2" stroke-width="1"/>
+      <ellipse cx="125" cy="95" rx="2.5" ry="1.5" fill="#fff" stroke="#BA71A2" stroke-width="1"/>
+      <!-- Hello World text (animated) -->
+      <text id="helloWorldText" x="144" y="46" text-anchor="middle" fill="#7E2A53" font-size="1rem" font-family="monospace"></text>
+    </g>
+  </svg>
+  <div class="minecraft-coder-name">Manaswi</div>
+</div>
+
+    </aside>
+  
+     
+   
+    <aside class="right-panel">
+      <div class="quote-card">
+        <span id="quoteText" class="motivation-text"></span>
+      </div>
+      <div class="mascot-card">
+        <img src="cat.jpg" alt="Cute Cat" class="mascot-img">
+        <div class="mascot-msg">Have a magical day! 🦄</div>
+      </div>
+      <!-- DreamyDo Pomodoro Timer Section -->
+<div class="pomodoro-card">
+  <h2 class="pomodoro-title">⏳ Dreamy Focus Timer</h2>
+  <div class="pomodoro-flower">
+    <svg id="bloomFlower" width="120" height="120" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="36" fill="#f3e8ff" />
+      <g id="petals">
+        <!-- Petals will be animated via JS -->
+        <ellipse class="petal" cx="60" cy="30" rx="12" ry="28" fill="#e0c3fc" opacity="0.2"/>
+        <ellipse class="petal" cx="90" cy="60" rx="12" ry="28" fill="#e0c3fc" opacity="0.2"/>
+        <ellipse class="petal" cx="60" cy="90" rx="12" ry="28" fill="#e0c3fc" opacity="0.2"/>
+        <ellipse class="petal" cx="30" cy="60" rx="12" ry="28" fill="#e0c3fc" opacity="0.2"/>
+      </g>
+      <circle cx="60" cy="60" r="18" fill="#b388ff" opacity="0.7"/>
+      <text x="60" y="67" text-anchor="middle" font-size="1.5rem" fill="#fff" font-family="Caveat">🌸</text>
+    </svg>
+    <div id="pomodoroTime" class="pomodoro-time">25:00</div>
+  </div>
+  <div class="pomodoro-controls">
+    <button id="pomodoroStart" class="pomodoro-btn">Start</button>
+    <button id="pomodoroPause" class="pomodoro-btn">Pause</button>
+    <button id="pomodoroReset" class="pomodoro-btn">Reset</button>
+  </div>
+  <div class="pomodoro-progress-bg">
+    <div id="pomodoroProgress" class="pomodoro-progress"></div>
+ </div>
+
+      <div class="doodle-card">
+        <h2 class="doodle-title">✍️ Doodle Pad</h2>
+        <canvas id="doodlePad" width="370" height="200"></canvas>
+        <button id="clearDoodleBtn" class="aesthetic-btn">Clear</button>
+      </div>
+
+ <div class="tictac-card">
+  <h2 class="tictac-title">❌⭕ Tic Tac Toe</h2>
+  <div id="tictacBoard" class="tictac-board"></div>
+  <div id="tictacStatus" class="tictac-status"></div>
+  <button id="tictacRestartBtn" class="aesthetic-btn">Restart</button>
+</div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+  <div id="gratitudeSun" class="gratitude-sun">
+  <span class="sun-emoji">🤍</span>
+</div>
+<div id="gratitudeSunPopup" class="gratitude-sun-popup">
+  <div class="gratitude-sun-popup-inner">
+    <span>What are you grateful for today?</span>
+    <input type="text" id="gratitudeSunInput" maxlength="60" placeholder="Type here..." />
+    <button id="gratitudeSunSave" class="aesthetic-btn">Save</button>
+  </div>
+</div>
+
+</body>
+</html>
