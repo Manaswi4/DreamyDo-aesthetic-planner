@@ -41,7 +41,7 @@ Edit
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/dreamydo-aesthetic-planner.git
+   git clone https://github.com/your-Manaswi4/dreamydo-aesthetic-planner.git
 2. Open index.html in your browser.
 
 3. Explore your dreamy productivity space! ✨
